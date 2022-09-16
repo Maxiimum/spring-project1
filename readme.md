@@ -170,4 +170,4 @@ DB ERD
 만든이
 -------------
   - 최대한
-  - 
+  - chleogks94@naver.com

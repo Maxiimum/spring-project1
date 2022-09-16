@@ -26,3 +26,9 @@
 DB ERD
 --------------
 ![final (3)](https://user-images.githubusercontent.com/80867166/190571134-6a1bb95b-1838-4d6e-b222-82d31b8eff0e.png)
+
+주요기능
+--------------
+1. 메인페이지
+
+- owlcarousel 플러그인을 적용하여 슬라이드를 구현했습니다.

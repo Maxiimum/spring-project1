@@ -91,8 +91,51 @@ DB ERD
 주요 소스 코드 폴더 및 파일 설명
 -------------
 
-- webapp -프론트엔드 소스 코드 폴더 및 Spring 환경설정 파일
+- webapp
+
+  - WEB-INF
+    - views : 페이지 이동시 실행되는 소스 코드 파일 모음 폴더
+      - index.jsp : tiles를 통해 모듈 분리를 위한 jsp 파일
+      - header.jsp : 상단 메뉴 구성 소스 코드
+      - footer.jsp : 제작자 정보 관련 소스 코드
+      - main/main.jsp : 메인 화면 소스 코드
+      - reserve/reserve.jsp : 예약 화면 소스 코드
+      - mypage/myReview.jsp : 마이페이지 나의탈출일지 소스 코드
+      - mypage/myReservaion.jsp : 마이페이지 예약내역 소스 코드
+      - 
+      - admin : 관리자 페이지 프론트 소스 코드 파일
+        - admin_member.jsp : 관리자페이지 회원목록 소스 코드
+        - admin_reserve.jsp : 관리자페이지 예약목록 소스 코드
+        - admin_theme.jsp : 관리자페이지 테마목록 소스 코드
+        - admin_theme_write.jsp : 관리자페이지 테마 등록 폼 소스 코드
+        - admin_theme_modify.jsp : 관리자페이지 테마 수정 폼 소스 코드
+
+    - spring : 스프링 환경설정 파일 모음 폴더
+      - root-context.xml : DB 및 ORM 관련설정
+      - appServlet/servlet-context.xml : DispatcherServlet 관련 설정
+      - appServlet/ tiles.xml : tiles 설정 파일
+
+    - web.xml : 웹 설정 파일
+    
   - resources : css, js, image 파일 모음
 
-  - WEB-INF : 페이지 이동시 실행되는 소스 코드 파일 모음 및 Spring 환경설정 파일
-    - as
+
+- java/open/sesame : 백엔드 소스 모음 폴더
+
+  - controller : 컨트롤러 파일 모음 폴더
+    - MainController.java : 메인화면 요청시 처리 컨트롤러
+    - ReserveController.java : 예약화면 요청시 처리 컨트롤러
+    - MypageController.java : 마이페이지 요청시 처리 컨트롤러
+  
+  - admin/controller : 관리자페이지 컨트롤러 파일 모음 폴더
+    - AdminController.java : 관리자페이지 메인화면 요청시 처리 컨트롤러
+    - AdminMemberController.java : 관리자페이지 회원목록화면 요청시 처리 컨트롤러
+    - AdminReserveController.java : 관리자페이지 예약목록화면 요청시 처리 컨트롤러
+    - AdminThemeController.java : 관리자페이지 테마목록화면 요청시 처리 컨트롤러
+    
+  - dto : dto 클래스 파일 모음 폴더 
+  - mapper : 마이바티스 매핑설정 파일 모음 폴더
+  - dao : dao 클래스 파일 모음 폴더
+  - service : service 파일 모음 폴더
+  - util : 기능 구현에 필요한 기타 클래스 파일 모음 폴더
+    - Pager.java : 페이징 처리 관련 클래스 파일

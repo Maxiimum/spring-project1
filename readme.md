@@ -35,18 +35,23 @@ DB ERD
   
   - owlcarousel 플러그인을 적용하여 슬라이드를 구현했습니다.
   - tiles를 적용하여 header영역, content영역, footer영역 구분했습니다.  
-    
-    
-     
-     
-  
+
+
+
+
   ![메인](https://user-images.githubusercontent.com/80867166/190584414-58a940b1-c2b6-4d94-886d-50c99cd922e0.png)
   
 
+
+
 2. REST API
+  
+  
   
   - 서버와 클라이언트간에 REST API 통신을 하기위해 노력했습니다.
   
+
+
 
 3. 방탈출 테마 예약 구현
 

@@ -6,6 +6,8 @@
 
 역할
 -------------
+- 팀명 : Team138
+- 팀장
 - 메인페이지
 - 예약페이지
 - 마이페이지(리뷰내역, 예약내역)
@@ -64,7 +66,7 @@ DB ERD
   - 회원은 자신의 예약내역을 삭제할 수 있게 구현했습니다.
 
 
-##마이페이지
+### 마이페이지
    ![image](https://user-images.githubusercontent.com/80867166/190613248-e393fe83-6e16-47ef-bb63-ae33870bae34.png)
 
 
@@ -79,7 +81,7 @@ DB ERD
   - 테마 이미지는 commons-fileupload 라이브러리를 적용하여 업로드 기능을 구현했습니다.
 
 
-##관리자페이지
+### 관리자페이지
    ![image](https://user-images.githubusercontent.com/80867166/190613821-241b18de-03ad-4091-8af1-05791bb7f79f.png)
 
 
@@ -140,3 +142,5 @@ DB ERD
   - service : service 파일 모음 폴더
   - util : 기능 구현에 필요한 기타 클래스 파일 모음 폴더
     - Pager.java : 페이징 처리 관련 클래스 파일
+- resources : 로그 및 mybatis 설정 파일
+

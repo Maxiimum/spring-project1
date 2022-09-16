@@ -38,7 +38,7 @@ DB ERD
 1. 메인페이지
   
   - owlcarousel 플러그인을 적용하여 슬라이드를 구현했습니다.
-  - tiles를 적용하여 header영역, content영역, footer영역 구분했습니다.  
+  - tiles를 적용하여 header영역, content영역, footer영역으로 구분했습니다.  
 
 
 

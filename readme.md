@@ -31,26 +31,26 @@ DB ERD
   
 주요기능
 --------------
-  1. 메인페이지
+1. 메인페이지
   
-    - owlcarousel 플러그인을 적용하여 슬라이드를 구현했습니다.
-    - tiles를 적용하여 header영역, content영역, footer영역 구분했습니다.
+  - owlcarousel 플러그인을 적용하여 슬라이드를 구현했습니다.
+  - tiles를 적용하여 header영역, content영역, footer영역 구분했습니다.
   
-    ![메인](https://user-images.githubusercontent.com/80867166/190584414-58a940b1-c2b6-4d94-886d-50c99cd922e0.png)
-  
-
-  2. REST API
-  
-    - 서버와 클라이언트간에 REST API 통신을 하기위해 노력했습니다.
+  ![메인](https://user-images.githubusercontent.com/80867166/190584414-58a940b1-c2b6-4d94-886d-50c99cd922e0.png)
   
 
-  3. 방탈출 테마 예약 구현
+2. REST API
+  
+  - 서버와 클라이언트간에 REST API 통신을 하기위해 노력했습니다.
+  
 
-    - 오늘 날짜 이전의 날짜는 예약할 수 없게 했습니다.
-    - 예약에 필요한 모든 데이터를 입력받아야 예약가능하게 했습니다.
+3. 방탈출 테마 예약 구현
+
+  - 오늘 날짜 이전의 날짜는 예약할 수 없게 했습니다.
+  - 예약에 필요한 모든 데이터를 입력받아야 예약가능하게 했습니다.
 
 
-     ![image](https://user-images.githubusercontent.com/80867166/190594854-a91ab08d-2255-4c72-9034-5c1598cafc0c.png)
+   ![image](https://user-images.githubusercontent.com/80867166/190594854-a91ab08d-2255-4c72-9034-5c1598cafc0c.png)
   
 4. 예약페이지 Ajax 이용
   - 지역 -> 카페 -> 테마 -> 시간 순으로 클릭시 해당하는 데이터들을 Ajax를 통해 화면에 보여줄 수 있게 구현했습니다.

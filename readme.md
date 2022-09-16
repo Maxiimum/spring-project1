@@ -32,3 +32,5 @@ DB ERD
 1. 메인페이지
 
 - owlcarousel 플러그인을 적용하여 슬라이드를 구현했습니다.
+
+![메인](https://user-images.githubusercontent.com/80867166/190584414-58a940b1-c2b6-4d94-886d-50c99cd922e0.png)

@@ -51,6 +51,10 @@
 	<select id="reviewCount" resultType="int">
 		select count(*) from review
 	</select>
+	
+	<select id="myReviewCount" resultType="int">
+		select count(*) from review where review_nick=#{memberNick}
+	</select>
 
 
 	<!-- // 닉네임 + 테마번호로 검색 -->

@@ -29,9 +29,11 @@
 		<div id="boardList">
 		
 		</div>
-		<div id="writeBtn">
-		<a class="btn btn-default pull-right" onclick="location.href='${pageContext.request.contextPath}/board/notice_write'">글쓰기</a>	
-		</div>
+		<c:if test="${loginMember.memberNick !=null and loginMember.memberStatus == 9}">
+			<div id="writeBtn">
+			<a class="btn btn-default pull-right" onclick="location.href='${pageContext.request.contextPath}/board/notice_write'">글쓰기</a>	
+			</div>
+		</c:if>
 		<div id="pageNum" class="text-center">
 					
 		</div>

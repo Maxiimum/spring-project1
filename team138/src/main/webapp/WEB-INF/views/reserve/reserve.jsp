@@ -209,6 +209,7 @@
 		return $dateYear+'/'+$dateMonth+'/'+$dateDay;
 	}
 		$(window).on("load", function () {
+				
 			//시간 기본 선택
 			//if (getParameterByName('type') == "select") {
 			//	setTimeout(function () {
@@ -243,7 +244,7 @@
 			$datetime_string = $(".vcal-date[data-calendar-status='active']").data("calendar-date");
 				//console.log($datetime_string);
 				
-			console.log(dateSwitch($datetime_string));
+			$clickDate = dateSwitch($datetime_string);
 				
 				
 				//$dateMonth = $datetime_string.substr(4,3);
@@ -276,9 +277,6 @@
 				dataType : "json",
 				success: function(data) {
 					$result = data.reserveAllowTime;
-
-					console.log(data.reserveAllowTime);
-					console.log($result);
 					
 					
 				$("#time_list").append(
@@ -316,6 +314,19 @@
 		}
 
 		$(".loc").click(function () {
+			if(isEmpty("${loginMember.memberEmail}") === true){
+				var animation = new TimelineLite();
+                $("html").css("overflow", "hidden");
+                animation.to('#m_main_menu', 0.2, { css: { className: '-=active', display: 'none' }, delay: 0, ease: Linear.easeNone });
+
+                $("body").css("overflow", "hidden");
+                $("#login_wrap_back").css("display", "block");
+                $("#login_wrap").css("display", "block");
+                $(".container").addClass("not_ie");
+			    $("#login_wrap_back").addClass("not_ie");
+			    return false;
+			}
+			
 			$("#book_btn").hide();
 
 			$loc = $(this).data("loc");
@@ -386,6 +397,18 @@
 
 
 		$('.store_list').on('click', '.store', function () {
+			if(isEmpty("${loginMember.memberEmail}") === true){
+				var animation = new TimelineLite();
+                $("html").css("overflow", "hidden");
+                animation.to('#m_main_menu', 0.2, { css: { className: '-=active', display: 'none' }, delay: 0, ease: Linear.easeNone });
+
+                $("body").css("overflow", "hidden");
+                $("#login_wrap_back").css("display", "block");
+                $("#login_wrap").css("display", "block");
+                $(".container").addClass("not_ie");
+			    $("#login_wrap_back").addClass("not_ie");
+			    return false;
+			}
 			$("#book_btn").hide();
 
 			$(".store").children().removeClass("active");
@@ -423,6 +446,20 @@
 		});
 
 		$('.theme_list').on('click', '.theme', function () {
+
+			if(isEmpty("${loginMember.memberEmail}") === true){
+				var animation = new TimelineLite();
+                $("html").css("overflow", "hidden");
+                animation.to('#m_main_menu', 0.2, { css: { className: '-=active', display: 'none' }, delay: 0, ease: Linear.easeNone });
+
+                $("body").css("overflow", "hidden");
+                $("#login_wrap_back").css("display", "block");
+                $("#login_wrap").css("display", "block");
+                $(".container").addClass("not_ie");
+			    $("#login_wrap_back").addClass("not_ie");
+			    return false;
+			}
+			
 			$("#book_btn").hide();
 			$("#time_list").empty();
 			
@@ -434,34 +471,33 @@
 			//console.log($theme_id);
 			
 			check_allow_time($theme_id,$clickDate);
-			
-			
-			
-			
+
 		});
 
 		/* calender */
 		$('.calender').on('click', '.vcal-date', function () {
+
 			$("#book_btn").hide();
 
 			$datetime_string = $(this).data("calendar-date");
 			$clickDate = dateSwitch($datetime_string);
-			//console.log(dateSwitch($datetime_string));
-			//console.log($clickDate);
-
-			if (isEmpty($datetime_string) === true) {
-				alert("예약 날짜를 먼저 선택해주세요.");
-			}
-
-			if (isEmpty($theme_id) === false
-				|| isEmpty($store_id) == false
-				|| isEmpty($loc) === false
-				|| isEmpty($datetime_string) === false) {
-				//search_allow_time($theme_id,$datetime_string);
-			}
+			
+			
 		});
 
 		$('.time_list').on('click', '.time', function () {
+			if(isEmpty("${loginMember.memberEmail}") === true){
+				var animation = new TimelineLite();
+                $("html").css("overflow", "hidden");
+                animation.to('#m_main_menu', 0.2, { css: { className: '-=active', display: 'none' }, delay: 0, ease: Linear.easeNone });
+
+                $("body").css("overflow", "hidden");
+                $("#login_wrap_back").css("display", "block");
+                $("#login_wrap").css("display", "block");
+                $(".container").addClass("not_ie");
+			    $("#login_wrap_back").addClass("not_ie");
+			    return false;
+			}
 
 			$('.time').removeClass("active");
 			$(this).addClass("active");
@@ -473,9 +509,6 @@
 			console.log($theme_id);
 			console.log($clickDate);
 			console.log($reserve_allow);
-			
-			
-			
 
 			if ($reserve_allow === false) {
 				alert("해당 시간은 예약이 만료되었습니다.");
@@ -492,6 +525,17 @@
 		});
 
 		$('.book_btn_box').on('click', '#book_btn', function () {
+			if(isEmpty("${loginMember.memberEmail}") === true){
+				var animation = new TimelineLite();
+                $("html").css("overflow", "hidden");
+                animation.to('#m_main_menu', 0.2, { css: { className: '-=active', display: 'none' }, delay: 0, ease: Linear.easeNone });
+
+                $("body").css("overflow", "hidden");
+                $("#login_wrap_back").css("display", "block");
+                $("#login_wrap").css("display", "block");
+                $(".container").addClass("not_ie");
+			    $("#login_wrap_back").addClass("not_ie");
+			}
 			// if(isEmpty($loc) === true) {
 			// 	alert("지역을 선택해주세요.");
 			// 	return false;
@@ -552,6 +596,11 @@
 
 		$("body").on("submit", "#reserve_frm", function (e) {
 			e.preventDefault();
+			
+			if(isEmpty("${loginMember.memberEmail}") === true){
+				alert("로그인 후 이용해주세요.");
+				return false;
+			}
 
 			if (isEmpty($loc) === true) {
 				alert("지역을 선택해주세요.");
@@ -607,7 +656,7 @@
 
 
 					if (data==="fail") {
-						alert("예약 실패");
+						alert("예약 실패 ");
 						return false;
 					} else {
 						alert("예약 성공");

@@ -21,6 +21,9 @@
 	 	</set>
 	 	where board_no=#{boardNo}
 	</update>
+	<update id="updateClickCount">
+		update board set board_click = board_click+1 where board_no=#{boardNo}
+	</update>
 	
 	<delete id="deleteBoard">
 		delete from board where board_no=#{boardNo}
@@ -30,9 +33,21 @@
 		select count(*) from board
 	</select>
 	
+	<select id="freeBoardCount" resultType="int">
+		select count(*) from board where board_cate=1
+	</select>
+	
+	<select id="teamBoardCount" resultType="int">
+		select count(*) from board where board_cate=2
+	</select>
+	
+	<select id="noticeBoardCount" resultType="int">
+		select count(*) from board where board_cate=3
+	</select>
+	
 	<select id="selectBoardList" resultType="Board">
-		select * from (select rownum rn, board.* from (select * from board
-			order by board_no desc) board) where rn between #{startRow} and #{endRow} and board_cate = #{boardCate}
+		select * from (select rownum rn, board.* from (select * from board where board_cate = #{boardCate}
+			order by board_date desc) board) where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="searchBoardList" resultType="Board">
@@ -41,6 +56,10 @@
 	
 	<select id="selectBoardNo" resultType="Board">
 		select * from board where board_no=#{boardNo} order by board_no
+	</select>
+	
+	<select id="selectBoardCate" resultType="Board">
+		select board_cate from board where board_no=#{boardNo}
 	</select>
 	
 </mapper>

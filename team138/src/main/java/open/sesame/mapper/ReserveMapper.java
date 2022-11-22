@@ -2,6 +2,8 @@ package open.sesame.mapper;
 
 import java.util.List;
 import java.util.Map;
+
+import open.sesame.dto.Member;
 import open.sesame.dto.Reserve;
 
 public interface ReserveMapper {

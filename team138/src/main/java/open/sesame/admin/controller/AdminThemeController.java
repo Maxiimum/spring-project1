@@ -57,14 +57,15 @@ public class AdminThemeController {
 		return returnMap;
 	}	
 	
+	//삭제가 DELETE가 아니고 POST인 이유는 다중 삭제에 경우 DELETE 메소드를 지원하지 않음 따라서 구분자로 받아서
+	//처리하는 방법이 있지만 이 경우 URL 길이를 넘어가는 데이터가 들어올 경우 불가. REST하진 않더라도 POST로 했음.
 	@RequestMapping(value = "/admin/theme_delete", method = RequestMethod.POST)
 	@ResponseBody
-	public String adminCheckDelete(@RequestParam(value="ThemeEmail[]") ArrayList<String> ThemeList)  {
+	public String adminCheckDeletee(@RequestParam(value="themeName[]") ArrayList<String> ThemeList)  {
 		
 		for(int i=0; i<ThemeList.size(); i++) {
 			themeService.removeTheme(ThemeList.get(i));
 		}
-
 		return "success";
 	}
 
@@ -126,18 +127,18 @@ public class AdminThemeController {
 		return "admin/admin_theme_modify";
 	}
 	
-	@RequestMapping(value = "/admin/admin_theme_modify/{themeNo}", method = RequestMethod.POST)
+	//수정이지만 PUT이 아닌 POST인 이유는 form 태그는 기본적으로 GET,POST만 지원함. 이걸 PUT DELETE로 우회하기 위해 
+	// hiddenHttpMethodFilter를 사용하는데 이마저도 파일업로드인 경우 ONLY POST임.
+	@RequestMapping(value = "/admin/admin_theme_modify/{themeNo}", method = {RequestMethod.POST})
 	public String adminThemeModify(@PathVariable int themeNo,@ModelAttribute Theme theme, @RequestParam String themeRecommend1
 			, @RequestParam String themeRecommend2) throws IllegalStateException, IOException {
 		
+		theme.setThemeRecommend(themeRecommend1+"~"+themeRecommend2);
 		if(theme.getFile().isEmpty()) {
-			theme.setThemeRecommend(themeRecommend1+"~"+themeRecommend2);
 			themeService.modifyTheme(theme);
 			
 			return "admin/admin_theme";
 		}
-		
-		theme.setThemeRecommend(themeRecommend1+"~"+themeRecommend2);
 		
 		String uploadDirectory=context.getServletContext().getRealPath("/resources/images/theme/detail/theme_img");
 		

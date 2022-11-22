@@ -10,6 +10,7 @@ public interface ReserveService {
 	void modifyUserinfo(int reserveNo);
 	void removeReserve(int reserveNo);
 	int getreserveCount();
+	int getMyreserveCount(String memberEmail);
 	Reserve getUserinfo(int reserveNo);
 	List<String> getCheckAllowTime(Map<String, Object> map);
 	List<Reserve> getReserveList(Map<String, Object> map);

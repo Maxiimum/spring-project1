@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
 
 import lombok.RequiredArgsConstructor;
 import open.sesame.dto.Board;
@@ -36,6 +37,7 @@ public class BoardController {
 	public String board(Model model) {
 		
 		return "board/freeBoard";
+		
 	}
 	
 	@RequestMapping(value = "/freeBoard_list", method = RequestMethod.GET)
@@ -43,7 +45,7 @@ public class BoardController {
 	public Map<String, Object> freeBoardList(@RequestParam(defaultValue = "1") int pageNum) {
 		
 
-		int totalBoard=boardService.getBoardCount();
+		int totalBoard=boardService.getFreeBoardCount();
 		int pageSize=10;
 		int blockSize=5;
 		
@@ -73,6 +75,7 @@ public class BoardController {
 	@RequestMapping(value = "/board_add", method = {RequestMethod.POST,RequestMethod.GET})
 	public String board(@ModelAttribute Board board) {
 		
+		board.setBoardContent(HtmlUtils.htmlEscape(board.getBoardContent()));
 		boardService.addBoard(board);
 		
 		return "redirect:/board";
@@ -90,7 +93,7 @@ public class BoardController {
 	public Map<String, Object> teamBoardList(@RequestParam(defaultValue = "1") int pageNum) {
 		
 
-		int totalBoard=boardService.getBoardCount();
+		int totalBoard=boardService.getTeamBoardCount();
 		int pageSize=10;
 		int blockSize=5;
 		
@@ -119,6 +122,7 @@ public class BoardController {
 	@RequestMapping(value = "/teamBoard_add", method = {RequestMethod.POST,RequestMethod.GET})
 	public String teamBoard(@ModelAttribute Board board) {
 		
+		board.setBoardContent(HtmlUtils.htmlEscape(board.getBoardContent()));
 		boardService.addBoard(board);
 		
 		return "redirect:/board/teamBoard";
@@ -136,7 +140,7 @@ public class BoardController {
 	public Map<String, Object> noticeList(@RequestParam(defaultValue = "1") int pageNum) {
 		
 
-		int totalBoard=boardService.getBoardCount();
+		int totalBoard=boardService.getNoticeBoardCount();
 		int pageSize=10;
 		int blockSize=5;
 		
@@ -148,7 +152,6 @@ public class BoardController {
 		pagerMap.put("startRow", pager.getStartRow());
 		pagerMap.put("endRow", pager.getEndRow());
 		pagerMap.put("boardCate", 3);
-		
 
 		Map<String, Object> returnMap=new HashMap<String, Object>();
 		returnMap.put("noticeList", boardService.getBoardList(pagerMap));
@@ -166,6 +169,7 @@ public class BoardController {
 	@RequestMapping(value = "/notice_add", method = {RequestMethod.POST,RequestMethod.GET})
 	public String notice(@ModelAttribute Board board) {
 		
+		board.setBoardContent(HtmlUtils.htmlEscape(board.getBoardContent()));
 		boardService.addBoard(board);
 		
 		return "redirect:/board/notice";
@@ -173,9 +177,11 @@ public class BoardController {
 	
 	@RequestMapping(value = "{boardNo}")
 	public String board_detail(@PathVariable int boardNo, Model model, HttpSession session) {
+		boardService.modifyClickCount(boardNo);
 		model.addAttribute("board",boardService.getSelectBoardNo(boardNo));
 		model.addAttribute("member",session.getAttribute("loginMember"));
 		model.addAttribute("reply",replyService.getReplyList(boardNo));
+		model.addAttribute("boardCate",boardService.getSelectBoardCate(boardNo));
 		return "/board/board_detail";
 		
 	}
@@ -206,5 +212,6 @@ public class BoardController {
 		return replyMap;
 		
 	}
+
 
 }

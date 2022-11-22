@@ -59,4 +59,46 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectBoardNo(boardNo);
 	}
 
+	@Override
+	public int getFreeBoardCount() {
+		return boardDAO.freeBoardCount();
+	}
+
+	@Override
+	public int getTeamBoardCount() {
+		return boardDAO.teamBoardCount();
+	}
+
+	@Override
+	public int getNoticeBoardCount() {
+		return boardDAO.noticeBoardCount();
+	}
+
+	@Override
+	public List<Board> getFreeBoardList(Map<String, Object> map) {
+		return boardDAO.selectFreeBoardList(map);
+	}
+
+	@Override
+	public List<Board> getTeamBoardList(Map<String, Object> map) {
+		return boardDAO.selectTeamBoardList(map);
+	}
+
+	@Override
+	public List<Board> getNoticeBoardList(Map<String, Object> map) {
+		return boardDAO.selectNoticeBoardList(map);
+	}
+
+	@Transactional
+	@Override
+	public void modifyClickCount(int boardNo) {
+		boardDAO.updateClickCount(boardNo);
+		
+	}
+
+	@Override
+	public Board getSelectBoardCate(int boardNo) {
+		return boardDAO.selectBoardCate(boardNo);
+	}
+
 }

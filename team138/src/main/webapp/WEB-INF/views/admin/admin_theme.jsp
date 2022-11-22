@@ -88,42 +88,46 @@ $(document).on('click','#removeBtn',function() {
 		$("#message").text("선택된 테마가 하나도 없습니다.");
 		return;
 	}
-	
-	var checkArr = new Array();
-	var list = $("input[name='themeName']");
-	for(var i=0; i<list.length; i++){
-		if(list[i].checked){
-			checkArr.push(list[i].value);
-		}
-	}
-	console.log(checkArr);
-	
-	$.ajax({
-		type: "POST",
-		url: "${pageContext.request.contextPath}/admin/theme_delete",
-		data: {
-			themeEmail : checkArr
-		},
-		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-		success: function(data) {
-			if(data === "fail"){
-				alert("선택테마 삭제 실패!");
-			} else {
-				themeListDisplay(page);
+	if(confirm("테마를 정말로 삭제하시겠습니까?")) {
+		var checkArr = new Array();
+		var list = $("input[name='checkName']");
+		for(var i=0; i<list.length; i++){
+			if(list[i].checked){
+				checkArr.push(list[i].value);
 			}
-			
 		}
-	});
-});
-
-
-$(document).on('change',"#allCheck",function() {
-	if($(this).is(":checked")) {
-		$(".check").prop("checked",true);
-	} else {
-		$(".check").prop("checked",false);
+		console.log(checkArr);
+		
+		$.ajax({
+			type: "POST",
+			url: "${pageContext.request.contextPath}/admin/theme_delete",
+			data: {
+				themeName : checkArr
+			},
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			success: function(data) {
+				if(data === "success"){
+					themeListDisplay(page);
+					
+				} else {
+					alert("선택테마 삭제 실패!");
+					console.log(data);
+					
+				}
+				
+			}
+		});
 	}
 });
+
+
+//$(document).on('change',"#allCheck",function() {
+//	if($(this).is(":checked")) {
+//		$(".check").prop("checked",true);
+//	} else {
+//		$(".check").prop("checked",false);
+//	}
+//});
 
 var page=1;//현재 요청 페이지의 번호를 저장하기 위한 전역변수
 
@@ -168,7 +172,7 @@ function themeListDisplay(pageNum) {
 				
 				html+="<tr>";
 				html+="<td class='member_check'>";
-				html+="<input type='checkbox' name='themeName' value="+this.themeName+" class='check'>";
+				html+="<input type='checkbox' name='checkName' value="+this.themeName+" class='check'>";
 				html+='<input type="hidden" name="n" value="'+this.themeNo+'" />';
 				html+="<td>"+this.themeName+"</td>";
 				html+='<td> <img src="${pageContext.request.contextPath}/images/theme/detail/theme_img/'+this.themeImageLoc+'" width="100px" height="100px"></td>';

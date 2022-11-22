@@ -25,7 +25,7 @@
 				<tr>
 					<th>장르</th>
 					<td><select class="genre" name="themeGenre" id="themeGenre">
-							<option value="코믹">코믹</option>
+							<option value="코믹" selected="selected">코믹</option>
 							<option value="스릴러">스릴러</option>
 							<option value="탈출">탈출</option>
 							<option value="어드벤쳐">어드벤쳐</option>
@@ -54,7 +54,7 @@
 				<tr>
 					<th>활동성</th>
 					<td><select class="activity" name="themeActivity" id="themeActivity">
-							<option value="낮음">낮음</option>
+							<option value="낮음" selected="selected">낮음</option>
 							<option value="보통">보통</option>
 							<option value="높음">높음</option>
 					</select></td>

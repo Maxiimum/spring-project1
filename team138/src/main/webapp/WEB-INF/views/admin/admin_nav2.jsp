@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<head>
+<meta charset="UTF-8">
+<title>열려라참깨 관리자</title>
+</head>
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 	<!-- Navbar Brand-->
 	<a class="navbar-brand ps-3"
@@ -27,9 +31,11 @@
 			aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 			<ul class="dropdown-menu dropdown-menu-end"
 				aria-labelledby="navbarDropdown">
-				<li><a class="dropdown-item" href="${pageContext.request.contextPath}/">홈페이지</a></li>
+				<li><a class="dropdown-item"
+					href="${pageContext.request.contextPath}/">홈페이지</a></li>
 				<li><hr class="dropdown-divider" /></li>
-				<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+				<li><a class="dropdown-item"
+					href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 			</ul></li>
 	</ul>
 </nav>

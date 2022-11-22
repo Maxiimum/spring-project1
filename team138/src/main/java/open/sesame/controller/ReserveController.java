@@ -77,7 +77,9 @@ public class ReserveController {
 	@RequestMapping(value = "/ok", method = RequestMethod.POST)
 	@ResponseBody
 	public String reserveInsert(@RequestBody Reserve reserve) {
-		
+		if(reserve.getReserveEmail() == null) {
+			return "fail";
+		}
 		
 		reserve.setReserveComment(HtmlUtils.htmlEscape(reserve.getReserveComment()));
 		reserve.setReservePayment(HtmlUtils.htmlEscape(reserve.getReservePayment()));

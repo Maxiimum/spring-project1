@@ -71,4 +71,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.reviewCount();
 	}
 
+	@Override
+	public int getMyReviewCount(String memberNick) {
+		return reviewDAO.myReviewCount(memberNick);
+	}
+
 }

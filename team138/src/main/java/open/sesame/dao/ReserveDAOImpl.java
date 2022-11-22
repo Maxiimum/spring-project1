@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
+import open.sesame.dto.Member;
 import open.sesame.dto.Reserve;
 import open.sesame.mapper.ReserveMapper;
 
@@ -54,5 +55,10 @@ public class ReserveDAOImpl implements ReserveDAO {
 	public List<Reserve> selectMyReserveList(Map<String, Object> map) {
 		return sqlSession.getMapper(ReserveMapper.class).selectMyReserveList(map);
 
+	}
+
+	@Override
+	public int myReserveCount(String memberEmail) {
+		return sqlSession.getMapper(ReserveMapper.class).myReserveCount(memberEmail);
 	}
 }

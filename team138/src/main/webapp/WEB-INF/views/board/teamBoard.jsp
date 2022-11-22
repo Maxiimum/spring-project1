@@ -77,10 +77,10 @@
 						html += "</tr>";
 						$(json.teamBoardList)
 								.each(
-										function() {
+										function(index) {
 											html += "<tr>";
 											html += "<td class='boardTd' align='center'>"
-													+ this.boardNo + "</td>";
+													+ (index+1) + "</td>";
 											html += "<td class = 'titleClick boardTd' align='center' onclick='location.href="+'"${pageContext.request.contextPath}/board/'+this.boardNo+'"'+"'>"
 													+ this.boardTitle + "</td>";
 											html += "<td td class='boardTd' align='center'>"

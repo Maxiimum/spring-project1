@@ -77,7 +77,7 @@
 		<select id="selectThemeCount" resultType="int">
 		select count(*) from theme
 	</select>
-	<delete id="deletetheme">
+	<delete id="deleteTheme">
 		delete from theme where theme_name=#{themeName}
 	</delete>
 	

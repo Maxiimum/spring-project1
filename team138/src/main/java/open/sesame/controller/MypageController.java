@@ -1,5 +1,6 @@
 package open.sesame.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,18 +33,10 @@ public class MypageController {
 	public final ReserveService reserveService;
 	public final ReviewService reviewService;
 	public final ThemeService themeService;
-	/*
-	@RequestMapping
-	public String mypage() {
-		return "mypage/myBasic";
-	}
-	
-	*/
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String mypage(Model model, HttpSession session){
 		model.addAttribute("member",session.getAttribute("loginMember"));
-		//System.out.println(session.getAttribute("loginMember"));
 		return "mypage/myBasic";
 	}
 	
@@ -63,7 +56,7 @@ public class MypageController {
 		
 		Member member = (Member)session.getAttribute("loginMember");
 		
-		int totalBoard=reserveService.getreserveCount();
+		int totalBoard=reserveService.getMyreserveCount(member.getMemberEmail());
 		int pageSize=10;
 		int blockSize=5;
 		
@@ -82,6 +75,16 @@ public class MypageController {
 		
 	}
 	
+	@RequestMapping(value = "/reserve_delete", method = RequestMethod.POST)
+	public String adminCheckDelete(@RequestParam(value="reserveNo[]") ArrayList<Integer> reserveList) throws MemberNotFoundException {
+		
+		for(int i=0; i<reserveList.size(); i++) {
+			reserveService.removeReserve(reserveList.get(i));
+		}
+
+		return "success";
+	}
+	
 	@RequestMapping(value = "/myReview", method = RequestMethod.GET)
 	public String myReview() {
 		return "mypage/myReview";
@@ -93,7 +96,7 @@ public class MypageController {
 		
 		Member member = (Member)session.getAttribute("loginMember");
 		
-		int totalBoard=reviewService.getReviewCount();
+		int totalBoard=reviewService.getMyReviewCount(member.getMemberNick());
 		int pageSize=10;
 		int blockSize=5;
 		
@@ -125,9 +128,9 @@ public class MypageController {
 		return "mypage/memberModify";
 	}
 	
-	@RequestMapping(value = "/memberModify_action", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/memberModify_action", method = RequestMethod.PUT)
+	@ResponseBody
 	public String memberModify_action(@RequestBody Member member, HttpSession session) throws MemberNotFoundException {
-		//System.out.println(member);
 		memberService.modifyMember(member);
 		session.setAttribute("loginMember", memberService.getMember(member.getMemberEmail()));
 		return "redirect:/";

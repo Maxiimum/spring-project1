@@ -663,12 +663,16 @@ $("#searchCateBtn").click(function() {
 			
 			$(returnMap.themeCateList).each(function(){
 				html+= '<div class="themes">'
+				html+= '<a href="${pageContext.request.contextPath}/theme/theme_detail/'+this.themeNo +'">'
 				html+= '<img class="themeListImg" src="${pageContext.request.contextPath}/images/theme/detail/theme_img/'+this.themeImageLoc+'">'
-				html+= '<p>'+this.themeName+'</p>'
-				html+= '<p>'+this.themeDifficult+'</p>'
-				html+= '<p>'+this.themeRecommend+'</p>'
-				html+= '<p>'+this.themeCname+'</p>'
-				html+= '</div>'
+				html+= '</a>'
+				html+= '<a href="${pageContext.request.contextPath}/theme/theme_detail/'+this.themeNo +'" style="text-decoration: none;">'
+			    html+= '<p>'+this.themeName+'</p>'
+			    html+= '</a>'
+			    html+= '<p>'+this.themeDifficult+'</p>'
+			    html+= '<p>'+this.themeRecommend+'</p>'
+			    html+= '<p>'+this.themeCname+'</p>'
+			    html+= '</div>'
 			});
 			$("#themeList").html(html);
 			

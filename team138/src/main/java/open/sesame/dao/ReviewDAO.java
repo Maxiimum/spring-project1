@@ -10,6 +10,7 @@ public interface ReviewDAO {
 	int updateReview(Review review);
 	int deleteReview(int reviewNo);
 	int reviewCount();
+	int myReviewCount(String memberNick);
 	Review selectReview(int reviewNo);
 	Review selectReviewByNickname(Map<String, Object> map);
 	List<Review> selectReviewListReview(int reviewTno);

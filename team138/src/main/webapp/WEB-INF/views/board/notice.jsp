@@ -73,9 +73,9 @@
 				html+="<th class='boardTh' width='60'>조회수</th>";
 				html+="<th class='boardTh' width='170'>작성일</th>";								
 				html+="</tr>";
-				$(json.noticeList).each(function() {
+				$(json.noticeList).each(function(index) {
 					html+="<tr>";
-					html+="<td class='boardTd' align='center'>"+this.boardNo+"</td>";
+					html+="<td class='boardTd' align='center'>"+(index+1)+"</td>";
 					html+="<td class = 'titleClick boardTd' align='center' onclick='location.href="+'"${pageContext.request.contextPath}/board/'+this.boardNo+'"'+"'>"+this.boardTitle+"</td>";
 					html+="<td td class='boardTd' align='center'>"+this.boardNick+"</td>";
 					html+="<td td class='boardTd'>"+this.boardClick+"</td>";

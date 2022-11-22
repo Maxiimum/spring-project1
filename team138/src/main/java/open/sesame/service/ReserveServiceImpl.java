@@ -57,4 +57,9 @@ public class ReserveServiceImpl  implements ReserveService{
 	public List<Reserve> getMyReserveList(Map<String, Object> map) {
 		return reserveDao.selectMyReserveList(map);
 	}
+
+	@Override
+	public int getMyreserveCount(String memberEmail) {
+		return reserveDao.myReserveCount(memberEmail);
+	}
 }

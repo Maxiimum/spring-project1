@@ -11,6 +11,7 @@ public interface ReviewService {
 	void modifyReview(Review review);
 	void removeReview(int reviewNo);
 	int getReviewCount();
+	int getMyReviewCount(String memberNick);
 	Review getReview(int reviewNo);
 	Review getReviewByNickname(Map<String, Object> map);
 	List<Review> getReviewListReview(int reviewTno);

@@ -272,7 +272,7 @@ $("#modifyBtn").click(function(){
 	//alert(formData)
 	$.ajax({
 		url: "${pageContext.request.contextPath}/mypage/memberModify_action",
-		type : "POST",
+		type : "PUT",
 		contentType : "application/json",
 		data : JSON.stringify(formData),
 		success : function(data){

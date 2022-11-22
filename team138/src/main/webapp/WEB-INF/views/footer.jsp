@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>열려라 참깨</title>
 <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/footer.css'>
 </head>
 <body>

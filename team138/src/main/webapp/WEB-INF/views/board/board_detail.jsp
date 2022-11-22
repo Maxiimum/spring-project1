@@ -1,119 +1,130 @@
 <%@page import="open.sesame.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style type="text/css">
-
-#displayDiv{
+#displayDiv {
 	width: 100%;
-    padding: 60px;
-    background-color: #f0f0f0;
+	padding: 60px;
+	background-color: #f0f0f0;
 }
 
-#fix{
+#fix {
 	width: 850px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-#topTitle, #topNick{
-	
-    display: inline-block;
-    height: 20px;
+#topTitle, #topNick, #clickCount {
+	display: inline-block;
+	height: 20px;
 }
 
-#topTitle{
-	width: 500px;
+#topTitle {
+	width: 400px;
 }
 
-#topNick{
+#topNick {
 	width: 270px;
 }
 
-#topNick, #topNick>p, #topNick>label{
+#topNick, #topNick>p, #topNick>label {
 	float: right;
 }
 
-#topNick>label{
+#topNick>label {
 	margin-left: 30px;
 }
 
-#topTitle>p, #topNick>p{
+#topTitle>p, #topNick>p {
 	margin-left: 30px;
 }
 
-#topTitle>p, #topTitle>label,#topNick>p, #topNick>label, .replyNickDiv, .replyContentDiv{
+#topTitle>p, #topTitle>label, #topNick>p, #topNick>label, .replyNickDiv,
+	.replyContentDiv {
 	display: inline-block;
 }
 
-#replyBtn, #replyBtn2{
+#replyBtn, #replyBtn2 {
 	cursor: pointer;
 }
 
-#divs{
+#divs {
 	background-color: white;
 	border: 1px solid lightgrey;
 }
 
-#topDiv{
-	padding : 5px 30px 5px 30px;
+#topDiv {
+	padding: 5px 30px 5px 30px;
 	margin-bottom: 10px;
-	margin-top : 30px;
+	margin-top: 30px;
 }
 
-#contextDiv{
+#contextDiv {
 	min-height: 200px;
-    padding: 45px;
+	padding: 45px;
 }
 
-#allreplyDiv{
+#allreplyDiv {
 	padding-left: 40px;
 }
 
-#replyBtn, #replyBtn2{
+#boardListBtn {
 	width: 70px;
-    height: 25px;
-    padding-left: 7px;
-    padding-top: 3px;
-    float: right;
-    margin-right: 40px;
-    margin-top: 7px;
-    border: 1px solid #cfcfcf;
+	height: 25px;
+	padding-left: 7px;
+	padding-top: 3px;
+	float: left;
+	margin-right: 40px;
+	margin-top: 7px;
+	border: 1px solid #cfcfcf;
 }
 
-#replyBtn:hover{
+#replyBtn, #replyBtn2 {
+	width: 70px;
+	height: 25px;
+	padding-left: 7px;
+	padding-top: 3px;
+	float: right;
+	margin-right: 40px;
+	margin-top: 7px;
+	border: 1px solid #cfcfcf;
+}
+
+#replyBtn:hover {
 	background-color: #cfcfcf;
 }
 
-#replyFormDiv2{
+#replyFormDiv2 {
 	display: none;
 }
 
-.replyNickDiv{
+.replyNickDiv {
 	font-weight: bold;
-    margin-right: 20px;
-    width: 110px;
-    text-align: left;
+	margin-right: 20px;
+	width: 110px;
+	text-align: left;
 }
 
-.replyList{
-    margin-bottom: 7px;
-    margin-left: 30px;
+.replyList {
+	margin-bottom: 7px;
+	margin-left: 30px;
 }
 
-#replyFormDiv{
+#replyFormDiv {
 	margin-bottom: 60px;
 }
 
-#replyDiv{
+#replyDiv {
 	margin: 30px;
-    margin-left: 65px;
+	margin-left: 65px;
 }
-
 </style>
 <div id="titleImages">
-	<img src="${pageContext.request.contextPath}/images/board/freeBoard.png" width="1920px" height="300px">
+	<img
+		src="${pageContext.request.contextPath}/images/board/freeBoard.png"
+		width="1920px" height="300px">
 </div>
 <div id="displayDiv">
 	<div id="fix">
@@ -123,61 +134,88 @@
 					<label>제목</label>
 					<p>${board.boardTitle }</p>
 				</div>
-				<div id="topNick">	
+				<div id="topNick">
 					<p>${board.boardNick }</p>
 					<label>작성자</label>
 					<p style="opacity: 10%">｜</p>
-				</div>		
+				</div>
 			</div>
 			<hr style="width: 95%;">
 			<div id="contextDiv">
 				<div id="contentText">
-				<p>${board.boardContent }</p>
+					<p>${board.boardContent }</p>
+				</div>
 			</div>
-		</div>
-		<hr style="width: 95%;">
+			<hr style="width: 95%;">
 			<div id="allreplyDiv">
-					<c:forEach var="reply" items="${reply}">
-							<div class="replyList">
-							<label class="replyNickDiv">${reply.replyNick }</label>
-							<div class="replyContentDiv">${reply.replyContent }</div>
-							</div>
-							<div id="replyFormDiv2">
-							<form id="replyForm" name="replyForm">
+				<c:forEach var="reply" items="${reply}">
+					<div class="replyList">
+						<label class="replyNickDiv">${reply.replyNick }</label>
+						<div class="replyContentDiv">${reply.replyContent }</div>
+					</div>
+
+					<div id="replyFormDiv2">
+						<form id="replyForm" name="replyForm">
 							<div id="writeNick">
-							<label>댓글 작성자</label>
-							<input style="border: none;" type="text" class="replyNick1" value="${reply.replyNick }" readonly="readonly">
+								<label>댓글 작성자</label> <input style="border: none;" type="text"
+									class="replyNick1" value="${reply.replyNick }"
+									readonly="readonly">
 							</div>
 							<div>
-							<input style="width: 95%; height: 100px; border: 1px solid #cfcfcf;" type="text" id="replyContent2" name="replyContent2">
-							<input type="hidden" id="replyBno" name="replyBno" value="${board.boardNo }" readonly="readonly">
+								<input
+									style="width: 95%; height: 100px; border: 1px solid #cfcfcf;"
+									type="text" id="replyContent2" name="replyContent2"> <input
+									type="hidden" id="replyBno" name="replyBno"
+									value="${board.boardNo }" readonly="readonly">
 							</div>
 							<div class="replyBtn2" data-replyDept="${reply.replyDept }">댓글달기</div>
-							</form>
-							</div>
-					</c:forEach>
-				</div>
-				<div id="replyDiv">
-			
+
+						</form>
+					</div>
+				</c:forEach>
+			</div>
+			<div id="replyDiv">
+
 				<div id="replyFormDiv">
-					<form id="replyForm" name="replyForm" action="${pageContext.request.contextPath}/board/reply_add">
+					<form id="replyForm" name="replyForm"
+						action="${pageContext.request.contextPath}/board/reply_add">
+						<c:if test="${loginMember.memberNick !=null}">
 						<div id="writeNick">
-						<label>댓글 작성자</label>
-						<input style="border: none;" type="text" id="replyNick1" name="replyNick1" value="${member.memberNick }" readonly="readonly">
+							<label>댓글 작성자</label> <input style="border: none;" type="text"
+								id="replyNick1" name="replyNick1" value="${member.memberNick }"
+								readonly="readonly">
 						</div>
+						
 						<div>
-						<textarea style="width: 95%; height: 100px; border: 1px solid #cfcfcf; padding: 7px;" id="replyContent" name="replyContent"></textarea>
-						<input type="hidden" id="replyBno" name="replyBno" value="${board.boardNo }" readonly="readonly">
+							<textarea
+								style="width: 95%; height: 100px; border: 1px solid #cfcfcf; padding: 7px;"
+								id="replyContent" name="replyContent"></textarea>
+							<input type="hidden" id="replyBno" name="replyBno"
+								value="${board.boardNo }" readonly="readonly">
 						</div>
 						<div id="replyBtn">댓글달기</div>
+						</c:if>
+						<button id="boardListBtn" type="button" onclick="backList();">글목록</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
+
+function backList(){
+
+	if(${board.boardCate}===1){
+		window.location.replace("${pageContext.request.contextPath}/board");
+	} else if(${board.boardCate}===2){
+		window.location.replace("${pageContext.request.contextPath}/board/teamBoard");
+	} else {
+		window.location.replace("${pageContext.request.contextPath}/board/notice");
+	}
+}
 
 if ($("#replyNick1").val()=="") {
 	$("#replyNick1").val("Unknown");

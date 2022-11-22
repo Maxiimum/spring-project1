@@ -54,4 +54,44 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlSession.getMapper(BoardMapper.class).selectBoardNo(boardNo);
 	}
 
+	@Override
+	public int freeBoardCount() {
+		return sqlSession.getMapper(BoardMapper.class).freeBoardCount();
+	}
+
+	@Override
+	public int teamBoardCount() {
+		return sqlSession.getMapper(BoardMapper.class).teamBoardCount();
+	}
+
+	@Override
+	public int noticeBoardCount() {
+		return sqlSession.getMapper(BoardMapper.class).noticeBoardCount();
+	}
+
+	@Override
+	public List<Board> selectFreeBoardList(Map<String, Object> map) {
+		return sqlSession.getMapper(BoardMapper.class).selectFreeBoardList(map);
+	}
+
+	@Override
+	public List<Board> selectTeamBoardList(Map<String, Object> map) {
+		return sqlSession.getMapper(BoardMapper.class).selectTeamBoardList(map);
+	}
+
+	@Override
+	public List<Board> selectNoticeBoardList(Map<String, Object> map) {
+		return sqlSession.getMapper(BoardMapper.class).selectNoticeBoardList(map);
+	}
+
+	@Override
+	public int updateClickCount(int boardNo) {
+		return sqlSession.getMapper(BoardMapper.class).updateClickCount(boardNo);
+	}
+
+	@Override
+	public Board selectBoardCate(int boardNo) {
+		return sqlSession.getMapper(BoardMapper.class).selectBoardCate(boardNo);
+	}
+
 }

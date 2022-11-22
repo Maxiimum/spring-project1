@@ -54,6 +54,10 @@
 		select count(*) from reserve
 	</select>
 	
+	<select id="myReserveCount" resultType="int">
+		select count(*) from reserve where reserve_email=#{memberEmail}
+	</select>
+	
 	<select id="selectReserve" resultType="Reserve">
 		select * from reserve where reserve_no=#{reserveNo}
 	</select>

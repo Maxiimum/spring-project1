@@ -39,7 +39,7 @@ public class ThemeController {
 	
 	@RequestMapping
 	public String theme(Model model) {
-		model.addAttribute("themeList",themeService.getOtherThemeList("마스터키프라임 신촌점"));
+		model.addAttribute("themeList",themeService.getThemeList());
 		return "theme/themeList";
 		
 	}

@@ -180,40 +180,40 @@ $(document).on('change',"#allCheck",function() {
 		$(".check").prop("checked",false);
 	}
 });
-/*
+
 $(document).on('click','#removeBtn',function() {
 	if($(".check").filter(":checked").length==0) {
 		$("#message").text("선택된 회원이 하나도 없습니다.");
 		return;
 	}
-	
-	var checkArr = new Array();
-	var list = $("input[name='checkreserveNo']");
-	for(var i=0; i<list.length; i++){
-		if(list[i].checked){
-			checkArr.push(list[i].value);
-		}
-	}
-	console.log(checkArr);
-	
-	$.ajax({
-		type: "POST",
-		url: "${pageContext.request.contextPath}/mypage/reserveInfo",
-		data: {
-			reserveNo : checkArr
-		},
-		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-		success: function(data) {
-			if(data === "fail"){
-				alert("선택예약 삭제 실패!");
-			} else {
-				reserveListDisplay(page);
+	if(confirm("예약을 정말로 삭제하시겠습니까?")) {
+		var checkArr = new Array();
+		var list = $("input[name='checkreserveNo']");
+		for(var i=0; i<list.length; i++){
+			if(list[i].checked){
+				checkArr.push(list[i].value);
 			}
-			
 		}
-	});
+		console.log(checkArr);
+		
+		$.ajax({
+			type: "POST",
+			url: "${pageContext.request.contextPath}/mypage/reserve_delete",
+			data: {
+				reserveNo : checkArr
+			},
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			success: function(data) {
+				if(data === "success"){
+					reserveListDisplay(page);
+				} else {
+					alert("선택예약 삭제 실패!");
+				}
+				
+			}
+		});
+	}
 });
-*/
 
 
 
@@ -316,6 +316,3 @@ function pageNumDisplay(pager) {
 	$("#pageNumDiv").html(html);
 }
 </script>
-
-
-

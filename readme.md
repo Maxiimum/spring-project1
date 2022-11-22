@@ -3,7 +3,10 @@
 프로젝트내용
 -------------
   - 방탈출카페 예약플랫폼 및 커뮤니티
-  <a href="http://itwill.xyz/team138/main" target="_blank">열려라참깨</a>
+  [열려라참깨][]
+
+# link define
+[Google]: http://itwill.xyz/team138/main
 
 개발기간
 -------------
